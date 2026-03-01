@@ -1,13 +1,13 @@
 from random import randint
 from time import sleep
 
+#Liste der möglichen Begriffe - ein Begriff und der dazugehörige Hilfsbegriff müssen den selben Index in der jeweiligen Liste haben um zu funktionieren.
 Begriffe = [
     "Stift",
     "Schule",
     "Bob der Baumeister",
     "Virus",
     "Will of D.",
-    "Goyim",
     "Pizza",
     "Wüste",
     "Computer",
@@ -60,7 +60,6 @@ Hbegriffe = [
     "Kinderserie",
     "Infektion",
     "One Piece",
-    "Gruppe",
     "Italien",
     "Heiß",
     "Technik",
@@ -109,6 +108,7 @@ Hbegriffe = [
 
 BLen = len(Begriffe)
 
+#hier wird der Spieler gefragt wer mitspielt zw wie viele mitspielen. Dazu wird eine Liste erstellt
 def SpielerListe():
     AnzahlSpieler = int(input("Wie viele Spieler?: \n "))
     global Spieler
@@ -118,11 +118,13 @@ def SpielerListe():
         Spieler.append(NickName)
     return Spieler
 
-
+#aus den verfügbaren Begriffen oben wird zufällig ein Begriff ausgewählt. Oder eher der Index dieses Begriffes.
 def BegriffAuswahl():
     BVar = randint(0, BLen-1)
     return BVar
 
+#den spielern wird gesagt ob sie Impostor sind oder nicht (mit Spoiler-Schutz) - dementsprechend wird ihnen der begriff oder hilfsbegriff ausgegeben
+#darauf folgend kann man entscheiden ob man mit den selben spielern weiterspielt (Setup() wird neugestartet) oder nicht - Funktion endet und Programm muss neugestartet werden.
 def SetUp():
     SpLen = len(Spieler)
     ImpVar = randint(0, SpLen-1)
@@ -141,14 +143,19 @@ def SetUp():
         for _ in range(300):
             print("SCROLL NICHT HOCH")
     Nochmal = int(input("Nochmal? \n 1 = Ja \n 2 = Nein \n "))
+    print("Viel Glück.")
     if Nochmal == 1:
         SetUp()
+    elif Nochmal = 2:
+        print("Schade")
     print("ES WAR", Spieler[ImpVar])
-    return "Viel Glück."
+    return 
 
+#damit bei wiederholtem Spielen die Spielerliste nicht erneut erstellt werden muss, wird müssen beide Funktionen getrennt sein aber beim Start nacheinander auslösen
 def Start():
     SpielerListe()
     SetUp()
-    return "Danke"
+    return print("Danke für's Spielen!")
+
 
 Start()
