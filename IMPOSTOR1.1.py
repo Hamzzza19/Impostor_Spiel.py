@@ -146,7 +146,7 @@ def SetUp():
     print("Viel Glück.")
     if Nochmal == 1:
         SetUp()
-    elif Nochmal = 2:
+    elif Nochmal == 2:
         print("Schade")
     print("ES WAR", Spieler[ImpVar])
     return 
